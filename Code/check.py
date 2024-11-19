@@ -6,11 +6,11 @@ def load_counter_argument_model(model_path):
     """Load the fine-tuned model for counter-argument classification."""
     try:
         model = GPT2LMHeadModel.from_pretrained(model_path)
-        tokenizer = AutoTokenizer.from_pretrained("gpt2")
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
         tokenizer.pad_token = tokenizer.eos_token
-        print(f"Successfully loaded model from {model_path}")
+        # print(f"Successfully loaded model from {model_path}")
     except Exception as e:
-        print(f"Error loading counter-argument model: {e}")
+        # print(f"Error loading counter-argument model: {e}")
         return None, None
     return model, tokenizer
 
@@ -29,7 +29,7 @@ def classify_counter_hate(hate_tweet, counter_hate, model, tokenizer, device):
         effectiveness = "Effective" if predicted_class.item() == 1 else "Ineffective"
         return effectiveness, predicted_class.item()
     except Exception as e:
-        print(f"Error during classification: {e}")
+        # print(f"Error during classification: {e}")
         return "Error occurred during classification.", None
 
 if __name__ == "__main__":
@@ -37,8 +37,8 @@ if __name__ == "__main__":
     counter_argument_model_path = os.path.join(current_dir, "Output", "final_trained_model")
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    print(f"Loading model from: {counter_argument_model_path}")
-    print(f"Using device: {device}")
+    # print(f"Loading model from: {counter_argument_model_path}")
+    # print(f"Using device: {device}")
 
     model, tokenizer = load_counter_argument_model(counter_argument_model_path)
 
@@ -53,8 +53,10 @@ if __name__ == "__main__":
     ]
 
     for hate_tweet, counter_hate in test_pairs:
-        print(f"\nProcessing pair:")
-        print(f"Hate tweet: {hate_tweet}")
-        print(f"Counter-hate: {counter_hate}")
+        print("hate_tweet")
+        print(hate_tweet)
+        print("Counter-hate:")
+        print({counter_hate})
         effectiveness, label = classify_counter_hate(hate_tweet, counter_hate, model, tokenizer, device)
-        print(f"Classification: {effectiveness} (Label: {label})")
+        print(f"Classification:") 
+        print({effectiveness}, {label})

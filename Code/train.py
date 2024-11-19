@@ -15,7 +15,7 @@ import datetime
 from torchmetrics.classification import BinaryAccuracy
 
 # Hyperparameter values to experiment with
-EPOCHS = 1
+EPOCHS = 6
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 SEED = 42
 LEARNING_RATE = 2e-5
