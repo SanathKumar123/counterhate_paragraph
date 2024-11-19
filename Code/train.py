@@ -151,7 +151,7 @@ def train(train_dataloader, validation_dataloader, model, scheduler, optimizer, 
         if avg_val_loss < best_score:
             print("Saving the best model...")
             best_score = avg_val_loss
-            model.save_pretrained(os.path.join(output_dir, "best_trained_model"))
+            # model.save_pretrained(os.path.join(output_dir, "best_trained_model"))
             epochs_without_improvement = 0
         else:
             epochs_without_improvement += 1

@@ -34,7 +34,7 @@ def classify_counter_hate(hate_tweet, counter_hate, model, tokenizer, device):
 
 if __name__ == "__main__":
     current_dir = os.getcwd()
-    counter_argument_model_path = os.path.join(current_dir, "Output", "trained_model")
+    counter_argument_model_path = os.path.join(current_dir, "Output", "final_trained_model")
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     print(f"Loading model from: {counter_argument_model_path}")

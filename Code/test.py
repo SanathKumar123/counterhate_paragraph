@@ -140,7 +140,7 @@ def main():
 
 	test_dataloader = torch.load(os.path.join(data_dir, 'test.pth'))
 	labels = test_dataloader.dataset.tensors[2].tolist()
-	trained_model = AutoModelForSequenceClassification.from_pretrained(os.path.join(trained_model_dir, "trained_model"))
+	trained_model = AutoModelForSequenceClassification.from_pretrained(os.path.join(trained_model_dir, "final_trained_model"))
 
 	preds = test(trained_model, test_dataloader)
 	preds = np.concatenate(preds).argmax(axis=1)
